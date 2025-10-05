@@ -44,7 +44,7 @@ dotnet watch run     # Start the API on localhost
 Make sure your PostgreSQL connection string is set in `appsettings.json` or via environment variables (`PG_CONNECTION`).
 
 #### 2. Frontend Setup
-```
+```bash
 cd frontend
 npm install          # Install dependencies
 npm start            # Start React app on localhost:3000
