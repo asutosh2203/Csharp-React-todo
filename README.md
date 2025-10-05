@@ -12,6 +12,7 @@ A simple Todo List application with a **React frontend** and a **.NET 9 + Postgr
 ## ⚡ Features
 - Add, update, and delete tasks ✅
 - Mark tasks as complete/incomplete ✅
+- Add a deadline for your tasks
 - Fully hooked to PostgreSQL via Entity Framework Core ✅
 - Modern React UI with Tailwind CSS styling ✅
 
