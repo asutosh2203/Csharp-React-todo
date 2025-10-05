@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 using backend.Data;
 using backend.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,11 +56,13 @@ app.UseHttpsRedirection();
 
 app.MapGet("/", () => "Server is running!");
 
-app.MapGet("/api/tasks", (AppDbContext db) => db.Tasks.ToListAsync());
+app.MapGet("/api/tasks", (AppDbContext db) => db.Tasks.OrderByDescending(t => t.CreatedAt).ToListAsync());
 
 // Add a new task
 app.MapPost("/api/tasks", async (AppDbContext db, TodoItem task) =>
 {
+    Console.WriteLine("Deadline: ");
+    Console.WriteLine(task.Deadline);
     db.Tasks.Add(task);
     await db.SaveChangesAsync();
     return Results.Created($"/api/tasks/{task.Id}", task);
